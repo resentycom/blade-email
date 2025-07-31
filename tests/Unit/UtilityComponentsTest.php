@@ -1,14 +1,14 @@
 <?php
 
-use BladeEmail\BladeEmail\Components\Spacer;
-use BladeEmail\BladeEmail\Components\Hr;
 use BladeEmail\BladeEmail\Components\Divider;
+use BladeEmail\BladeEmail\Components\Hr;
 use BladeEmail\BladeEmail\Components\Preview;
+use BladeEmail\BladeEmail\Components\Spacer;
 
 describe('Utility Components', function () {
     describe('Spacer Component', function () {
         it('creates spacer with default height', function () {
-            $spacer = new Spacer();
+            $spacer = new Spacer;
 
             expect($spacer->height)->toBe('20px');
             expect($spacer->styleString)->toContain('height: 20px');
@@ -50,7 +50,7 @@ describe('Utility Components', function () {
         });
 
         it('renders view', function () {
-            $spacer = new Spacer();
+            $spacer = new Spacer;
             $view = $spacer->render();
 
             expect($view->name())->toBe('blade-email::components.spacer');
@@ -59,7 +59,7 @@ describe('Utility Components', function () {
 
     describe('Hr Component', function () {
         it('creates hr with default styles', function () {
-            $hr = new Hr();
+            $hr = new Hr;
 
             expect($hr->styleString)->toContain('width: 100%');
             expect($hr->styleString)->toContain('border: none');
@@ -82,7 +82,7 @@ describe('Utility Components', function () {
         });
 
         it('renders view', function () {
-            $hr = new Hr();
+            $hr = new Hr;
             $view = $hr->render();
 
             expect($view->name())->toBe('blade-email::components.hr');
@@ -91,7 +91,7 @@ describe('Utility Components', function () {
 
     describe('Divider Component', function () {
         it('creates divider with default styles', function () {
-            $divider = new Divider();
+            $divider = new Divider;
 
             expect($divider->styleString)->toContain('width: 100%');
             expect($divider->styleString)->toContain('border: none');
@@ -108,7 +108,7 @@ describe('Utility Components', function () {
         });
 
         it('renders view', function () {
-            $divider = new Divider();
+            $divider = new Divider;
             $view = $divider->render();
 
             expect($view->name())->toBe('blade-email::components.divider');
@@ -117,7 +117,7 @@ describe('Utility Components', function () {
 
     describe('Preview Component', function () {
         it('creates preview with default settings', function () {
-            $preview = new Preview();
+            $preview = new Preview;
 
             expect($preview->text)->toBe('');
             expect($preview->maxLength)->toBe(150);
@@ -160,7 +160,7 @@ describe('Utility Components', function () {
         });
 
         it('renders view', function () {
-            $preview = new Preview();
+            $preview = new Preview;
             $view = $preview->render();
 
             expect($view->name())->toBe('blade-email::components.preview');

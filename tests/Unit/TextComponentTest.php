@@ -4,7 +4,7 @@ use BladeEmail\BladeEmail\Components\Text;
 
 describe('Text Component', function () {
     it('creates text with default tag', function () {
-        $text = new Text();
+        $text = new Text;
 
         expect($text->tag)->toBe('p');
         expect($text->styleString)->toContain('font-size: 14px');
@@ -65,7 +65,7 @@ describe('Text Component', function () {
     });
 
     it('renders view', function () {
-        $text = new Text();
+        $text = new Text;
         $view = $text->render();
 
         expect($view->name())->toBe('blade-email::components.text');

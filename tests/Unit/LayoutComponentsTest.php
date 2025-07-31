@@ -1,14 +1,14 @@
 <?php
 
-use BladeEmail\BladeEmail\Components\Container;
-use BladeEmail\BladeEmail\Components\Section;
-use BladeEmail\BladeEmail\Components\Row;
 use BladeEmail\BladeEmail\Components\Column;
+use BladeEmail\BladeEmail\Components\Container;
+use BladeEmail\BladeEmail\Components\Row;
+use BladeEmail\BladeEmail\Components\Section;
 
 describe('Layout Components', function () {
     describe('Container Component', function () {
         it('creates container with default styles', function () {
-            $container = new Container();
+            $container = new Container;
 
             expect($container->styleString)->toContain('max-width: 37.5em');
             expect($container->styleString)->toContain('margin: 0 auto');
@@ -37,7 +37,7 @@ describe('Layout Components', function () {
         });
 
         it('renders view', function () {
-            $container = new Container();
+            $container = new Container;
             $view = $container->render();
 
             expect($view->name())->toBe('blade-email::components.container');
@@ -46,7 +46,7 @@ describe('Layout Components', function () {
 
     describe('Section Component', function () {
         it('creates section with default styles', function () {
-            $section = new Section();
+            $section = new Section;
 
             expect($section->styleString)->toContain('width: 100%');
         });
@@ -66,7 +66,7 @@ describe('Layout Components', function () {
         });
 
         it('renders view', function () {
-            $section = new Section();
+            $section = new Section;
             $view = $section->render();
 
             expect($view->name())->toBe('blade-email::components.section');
@@ -75,7 +75,7 @@ describe('Layout Components', function () {
 
     describe('Row Component', function () {
         it('creates row with default styles', function () {
-            $row = new Row();
+            $row = new Row;
 
             expect($row->styleString)->toContain('width: 100%');
         });
@@ -95,7 +95,7 @@ describe('Layout Components', function () {
         });
 
         it('renders view', function () {
-            $row = new Row();
+            $row = new Row;
             $view = $row->render();
 
             expect($view->name())->toBe('blade-email::components.row');
@@ -104,7 +104,7 @@ describe('Layout Components', function () {
 
     describe('Column Component', function () {
         it('creates column with default styles', function () {
-            $column = new Column();
+            $column = new Column;
 
             expect($column->styleString)->toContain('vertical-align: top');
         });
@@ -131,7 +131,7 @@ describe('Layout Components', function () {
         });
 
         it('renders view', function () {
-            $column = new Column();
+            $column = new Column;
             $view = $column->render();
 
             expect($view->name())->toBe('blade-email::components.column');

@@ -4,7 +4,7 @@ use BladeEmail\BladeEmail\Components\Heading;
 
 describe('Heading Component', function () {
     it('creates heading with default level', function () {
-        $heading = new Heading();
+        $heading = new Heading;
 
         expect($heading->tag)->toBe('h1');
         expect($heading->styleString)->toContain('margin: 0');
@@ -79,7 +79,7 @@ describe('Heading Component', function () {
     });
 
     it('renders view', function () {
-        $heading = new Heading();
+        $heading = new Heading;
         $view = $heading->render();
 
         expect($view->name())->toBe('blade-email::components.heading');

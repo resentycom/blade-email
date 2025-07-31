@@ -1,12 +1,12 @@
 <?php
 
-use BladeEmail\BladeEmail\Components\Font;
 use BladeEmail\BladeEmail\Components\CodeBlock;
+use BladeEmail\BladeEmail\Components\Font;
 
 describe('Advanced Components', function () {
     describe('Font Component', function () {
         it('creates font with default settings', function () {
-            $font = new Font();
+            $font = new Font;
 
             expect($font->fontFamily)->toBe('Arial');
             expect($font->fallbackFontFamily)->toBe('sans-serif');
@@ -51,7 +51,7 @@ describe('Advanced Components', function () {
         it('builds font stack with web font', function () {
             $webFont = [
                 'url' => 'https://fonts.googleapis.com/css2?family=Inter',
-                'format' => 'woff2'
+                'format' => 'woff2',
             ];
 
             $font = new Font(
@@ -77,7 +77,7 @@ describe('Advanced Components', function () {
         });
 
         it('renders view', function () {
-            $font = new Font();
+            $font = new Font;
             $view = $font->render();
 
             expect($view->name())->toBe('blade-email::components.font');
@@ -86,7 +86,7 @@ describe('Advanced Components', function () {
 
     describe('CodeBlock Component', function () {
         it('creates code block with default settings', function () {
-            $codeBlock = new CodeBlock();
+            $codeBlock = new CodeBlock;
 
             expect($codeBlock->code)->toBe('');
             expect($codeBlock->language)->toBe('php');
@@ -176,7 +176,7 @@ describe('Advanced Components', function () {
         it('handles various themes', function () {
             $themes = [
                 'github-light', 'github-dark', 'vs-code-light', 'vs-code-dark',
-                'monokai', 'dracula', 'one-dark', 'nord'
+                'monokai', 'dracula', 'one-dark', 'nord',
             ];
 
             foreach ($themes as $theme) {
@@ -191,7 +191,7 @@ describe('Advanced Components', function () {
         });
 
         it('renders view', function () {
-            $codeBlock = new CodeBlock();
+            $codeBlock = new CodeBlock;
             $view = $codeBlock->render();
 
             expect($view->name())->toBe('blade-email::components.code-block');

@@ -32,7 +32,7 @@ class TestableBaseComponent extends BaseComponent
 
 describe('BaseComponent', function () {
     beforeEach(function () {
-        $this->component = new TestableBaseComponent();
+        $this->component = new TestableBaseComponent;
     });
 
     describe('mergeStyles', function () {
