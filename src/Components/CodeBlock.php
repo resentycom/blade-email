@@ -5,10 +5,15 @@ namespace BladeEmail\BladeEmail\Components;
 class CodeBlock extends BaseComponent
 {
     public string $code;
+
     public string $language;
+
     public string $theme;
+
     public bool $showLineNumbers;
+
     public ?string $title;
+
     public string $highlightedCode;
 
     public function __construct(
@@ -23,7 +28,7 @@ class CodeBlock extends BaseComponent
         $this->theme = $theme;
         $this->showLineNumbers = $showLineNumbers;
         $this->title = $title;
-        
+
         $this->highlightedCode = $this->processCode();
     }
 
@@ -37,14 +42,14 @@ class CodeBlock extends BaseComponent
         } catch (\Throwable $e) {
             // Fall through to fallback
         }
-        
+
         return $this->fallbackHighlight();
     }
 
     private function highlightWithPhiki(): string
     {
-        $phiki = new \Phiki\Phiki();
-        
+        $phiki = new \Phiki\Phiki;
+
         // Language mapping
         $languageMap = [
             'php' => \Phiki\Grammar\Grammar::Php,
@@ -56,7 +61,7 @@ class CodeBlock extends BaseComponent
             'css' => \Phiki\Grammar\Grammar::Css,
             'json' => \Phiki\Grammar\Grammar::Json,
         ];
-        
+
         // Theme mapping
         $themeMap = [
             'github-light' => \Phiki\Theme\Theme::GithubLight,
@@ -64,17 +69,17 @@ class CodeBlock extends BaseComponent
             'vs-code-light' => \Phiki\Theme\Theme::LightPlus,
             'vs-code-dark' => \Phiki\Theme\Theme::DarkPlus,
         ];
-        
+
         $grammarEnum = $languageMap[$this->language] ?? \Phiki\Grammar\Grammar::Php;
         $themeEnum = $themeMap[$this->theme] ?? \Phiki\Theme\Theme::GithubLight;
-        
+
         return $phiki->codeToHtml($this->code, $grammarEnum, $themeEnum);
     }
 
     private function fallbackHighlight(): string
     {
         $isDark = in_array($this->theme, ['github-dark', 'vs-code-dark', 'monokai', 'dracula']);
-        
+
         $fallbackStyles = [
             'font-family' => 'Menlo, Monaco, Consolas, \'Liberation Mono\', \'Courier New\', monospace',
             'font-size' => '14px',
@@ -86,14 +91,14 @@ class CodeBlock extends BaseComponent
             'word-wrap' => 'break-word',
             'background-color' => $isDark ? '#0d1117' : '#f6f8fa',
             'color' => $isDark ? '#f0f6fc' : '#24292f',
-            'overflow-x' => 'auto'
+            'overflow-x' => 'auto',
         ];
 
         $fallbackStyleString = collect($fallbackStyles)
-            ->map(fn($value, $key) => "{$key}: {$value}")
+            ->map(fn ($value, $key) => "{$key}: {$value}")
             ->implode('; ');
 
-        return '<pre style="' . $fallbackStyleString . '"><code>' . htmlspecialchars($this->code) . '</code></pre>';
+        return '<pre style="'.$fallbackStyleString.'"><code>'.htmlspecialchars($this->code).'</code></pre>';
     }
 
     public function render()

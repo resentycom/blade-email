@@ -5,6 +5,7 @@ namespace BladeEmail\BladeEmail\Components;
 class Html extends BaseComponent
 {
     public string $dir;
+
     public string $lang;
 
     public function __construct(
@@ -13,9 +14,9 @@ class Html extends BaseComponent
     ) {
         // Validate direction
         $this->dir = $this->validateEnum($dir, ['ltr', 'rtl'], 'ltr');
-        
+
         // Validate language (basic validation)
-        $this->lang = !empty($lang) ? $lang : 'en';
+        $this->lang = ! empty($lang) ? $lang : 'en';
     }
 
     public function render()

@@ -11,7 +11,6 @@ class Layout extends BaseComponent
         $this->styleString = $this->mergeStyles([], $style);
     }
 
-
     public function render()
     {
         return view('blade-email::components.layout');

@@ -10,12 +10,11 @@ class Section extends BaseComponent
     {
         // Default styles for email compatibility
         $defaultStyle = [
-            'width' => '100%'
+            'width' => '100%',
         ];
-        
+
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {

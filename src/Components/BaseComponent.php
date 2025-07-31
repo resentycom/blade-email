@@ -14,15 +14,16 @@ abstract class BaseComponent extends Component
         if (is_string($providedStyle)) {
             return trim($providedStyle) ?: $this->arrayToStyleString($defaultStyle);
         }
-        
+
         if (is_array($providedStyle)) {
             $mergedStyle = array_merge($defaultStyle, $providedStyle);
+
             return collect($mergedStyle)
-                ->filter(fn($value) => !is_null($value) && $value !== '')
-                ->map(fn($value, $key) => "{$key}: {$value}")
+                ->filter(fn ($value) => ! is_null($value) && $value !== '')
+                ->map(fn ($value, $key) => "{$key}: {$value}")
                 ->implode('; ');
         }
-        
+
         return $this->arrayToStyleString($defaultStyle);
     }
 
@@ -32,8 +33,8 @@ abstract class BaseComponent extends Component
     protected function arrayToStyleString(array $styles): string
     {
         return collect($styles)
-            ->filter(fn($value) => !is_null($value) && $value !== '')
-            ->map(fn($value, $key) => "{$key}: {$value}")
+            ->filter(fn ($value) => ! is_null($value) && $value !== '')
+            ->map(fn ($value, $key) => "{$key}: {$value}")
             ->implode('; ');
     }
 
@@ -50,20 +51,20 @@ abstract class BaseComponent extends Component
      */
     protected function validateNumeric(mixed $value, int $min = 0, ?int $max = null): ?int
     {
-        if (!is_numeric($value)) {
+        if (! is_numeric($value)) {
             return null;
         }
-        
+
         $numericValue = (int) $value;
-        
+
         if ($numericValue < $min) {
             return null;
         }
-        
+
         if ($max !== null && $numericValue > $max) {
             return null;
         }
-        
+
         return $numericValue;
     }
 }

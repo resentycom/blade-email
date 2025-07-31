@@ -10,12 +10,11 @@ class Row extends BaseComponent
     {
         // Default styles for email table compatibility
         $defaultStyle = [
-            'width' => '100%'
+            'width' => '100%',
         ];
-        
+
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {

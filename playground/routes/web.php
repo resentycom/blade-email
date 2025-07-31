@@ -13,7 +13,7 @@ Route::get('/email-preview', function () {
 Route::get('/plaid-verify', function () {
     return view('plaid-verify-identity', [
         'validationCode' => '144833',
-        'logoUrl' => '/static/plaid-logo.png'
+        'logoUrl' => '/static/plaid-logo.png',
     ]);
 });
 
@@ -29,7 +29,7 @@ Route::get('/vercel-invite', function () {
         'arrowImageUrl' => '/static/vercel-arrow.png',
         'teamImageUrl' => '/static/vercel-team.png',
         'ipAddress' => '204.13.186.218',
-        'location' => 'São Paulo, Brazil'
+        'location' => 'São Paulo, Brazil',
     ]);
 });
 
@@ -42,7 +42,7 @@ Route::get('/dropbox-reset', function () {
         'userFirstname' => 'Alan',
         'resetPasswordLink' => 'https://www.dropbox.com/reset-password',
         'helpCenterLink' => 'https://help.dropbox.com/security',
-        'logoUrl' => '/static/dropbox-logo.png'
+        'logoUrl' => '/static/dropbox-logo.png',
     ]);
 });
 
@@ -63,7 +63,7 @@ Route::get('/nike-receipt', function () {
         'recommendation2Image' => '/static/nike-recomendation-2.png',
         'recommendation3Image' => '/static/nike-recomendation-3.png',
         'recommendation4Image' => '/static/nike-recomendation-4.png',
-        'phoneIconUrl' => '/static/nike-phone.png'
+        'phoneIconUrl' => '/static/nike-phone.png',
     ]);
 });
 
@@ -87,19 +87,19 @@ Route::get('/test-email/{template}', function ($template) {
                 'arrowImageUrl' => '/static/vercel-arrow.png',
                 'teamImageUrl' => '/static/vercel-team.png',
                 'ipAddress' => '204.13.186.218',
-                'location' => 'São Paulo, Brazil'
-            ]
+                'location' => 'São Paulo, Brazil',
+            ],
         ],
         'plaid-verify' => [
             'view' => 'plaid-verify-identity',
             'data' => [
                 'validationCode' => '144833',
-                'logoUrl' => '/static/plaid-logo.png'
-            ]
+                'logoUrl' => '/static/plaid-logo.png',
+            ],
         ],
         'font-example' => [
             'view' => 'font-example',
-            'data' => []
+            'data' => [],
         ],
         'nike-receipt' => [
             'view' => 'nike-receipt',
@@ -119,16 +119,16 @@ Route::get('/test-email/{template}', function ($template) {
                 'recommendation2Image' => '/static/nike-recomendation-2.png',
                 'recommendation3Image' => '/static/nike-recomendation-3.png',
                 'recommendation4Image' => '/static/nike-recomendation-4.png',
-                'phoneIconUrl' => '/static/nike-phone.png'
-            ]
+                'phoneIconUrl' => '/static/nike-phone.png',
+            ],
         ],
         'code-example' => [
             'view' => 'code-example',
-            'data' => []
-        ]
+            'data' => [],
+        ],
     ];
 
-    if (!isset($templates[$template])) {
+    if (! isset($templates[$template])) {
         abort(404, 'Template not found');
     }
 
@@ -139,10 +139,10 @@ Route::get('/test-email/{template}', function ($template) {
     $testingInfo = "
     <!-- EMAIL TESTING INFO -->
     <!-- Template: {$template} -->
-    <!-- Generated: " . now() . " -->
-    <!-- Test URL: " . request()->url() . " -->
-    <!-- Send URL: " . url("/send-test-email/{$template}") . " -->
-    ";
+    <!-- Generated: ".now().' -->
+    <!-- Test URL: '.request()->url().' -->
+    <!-- Send URL: '.url("/send-test-email/{$template}").' -->
+    ';
 
-    return str_replace('</head>', $testingInfo . '</head>', $html);
+    return str_replace('</head>', $testingInfo.'</head>', $html);
 });

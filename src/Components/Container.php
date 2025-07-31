@@ -12,12 +12,11 @@ class Container extends BaseComponent
         $defaultStyle = [
             'max-width' => '37.5em',
             'margin' => '0 auto',
-            'width' => '100%'
+            'width' => '100%',
         ];
-        
+
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {

@@ -10,12 +10,11 @@ class Column extends BaseComponent
     {
         // Default styles for email table cell compatibility
         $defaultStyle = [
-            'vertical-align' => 'top'
+            'vertical-align' => 'top',
         ];
-        
+
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {

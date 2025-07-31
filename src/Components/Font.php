@@ -5,11 +5,17 @@ namespace BladeEmail\BladeEmail\Components;
 class Font extends BaseComponent
 {
     public string $fontFamily;
+
     public string $fallbackFontFamily;
+
     public string|int $fontWeight;
+
     public string $fontStyle;
+
     public ?array $webFont;
+
     public bool $preload;
+
     public string $fontStack;
 
     public function __construct(
@@ -26,7 +32,7 @@ class Font extends BaseComponent
         $this->fontStyle = $fontStyle;
         $this->webFont = $webFont;
         $this->preload = $preload;
-        
+
         // Build the full font stack
         $this->fontStack = $this->fallbackFontFamily;
         if ($this->webFont && isset($this->webFont['url'])) {

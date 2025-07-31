@@ -14,12 +14,11 @@ class Body extends BaseComponent
             'font-family' => 'Arial, sans-serif',
             'font-size' => '16px',
             'line-height' => '1.6',
-            'color' => '#333333'
+            'color' => '#333333',
         ];
 
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {

@@ -7,7 +7,9 @@ use InvalidArgumentException;
 class Button extends BaseComponent
 {
     public string $href;
+
     public string $target;
+
     public string $styleString;
 
     public function __construct(
@@ -20,7 +22,7 @@ class Button extends BaseComponent
             throw new InvalidArgumentException('Button component requires a href attribute');
         }
         $this->href = $href;
-        
+
         // Validate target attribute
         $this->target = $this->validateEnum($target, ['_blank', '_self', '_parent', '_top'], '_blank');
 
@@ -32,12 +34,11 @@ class Button extends BaseComponent
             'padding' => '12px 20px',
             'border-radius' => '3px',
             'font-weight' => '600',
-            'background-color' => '#000'
+            'background-color' => '#000',
         ];
 
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {

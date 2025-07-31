@@ -2,40 +2,40 @@
 
 namespace BladeEmail\BladeEmail;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Blade;
-use BladeEmail\BladeEmail\Components\Button;
-use BladeEmail\BladeEmail\Components\Text;
-use BladeEmail\BladeEmail\Components\Img;
-use BladeEmail\BladeEmail\Components\Link;
-use BladeEmail\BladeEmail\Components\Container;
-use BladeEmail\BladeEmail\Components\Section;
-use BladeEmail\BladeEmail\Components\Row;
-use BladeEmail\BladeEmail\Components\Column;
-use BladeEmail\BladeEmail\Components\Heading;
-use BladeEmail\BladeEmail\Components\Html;
-use BladeEmail\BladeEmail\Components\Head;
 use BladeEmail\BladeEmail\Components\Body;
-use BladeEmail\BladeEmail\Components\HtmlBody;
-use BladeEmail\BladeEmail\Components\Spacer;
-use BladeEmail\BladeEmail\Components\Hr;
-use BladeEmail\BladeEmail\Components\Divider;
-use BladeEmail\BladeEmail\Components\Preview;
-use BladeEmail\BladeEmail\Components\Font;
+use BladeEmail\BladeEmail\Components\Button;
 use BladeEmail\BladeEmail\Components\CodeBlock;
-use BladeEmail\BladeEmail\Components\Header;
+use BladeEmail\BladeEmail\Components\Column;
+use BladeEmail\BladeEmail\Components\Container;
+use BladeEmail\BladeEmail\Components\Divider;
+use BladeEmail\BladeEmail\Components\Font;
 use BladeEmail\BladeEmail\Components\Footer;
+use BladeEmail\BladeEmail\Components\Head;
+use BladeEmail\BladeEmail\Components\Header;
+use BladeEmail\BladeEmail\Components\Heading;
+use BladeEmail\BladeEmail\Components\Hr;
+use BladeEmail\BladeEmail\Components\Html;
+use BladeEmail\BladeEmail\Components\HtmlBody;
+use BladeEmail\BladeEmail\Components\Img;
 use BladeEmail\BladeEmail\Components\Layout;
+use BladeEmail\BladeEmail\Components\Link;
+use BladeEmail\BladeEmail\Components\Preview;
+use BladeEmail\BladeEmail\Components\Row;
+use BladeEmail\BladeEmail\Components\Section;
+use BladeEmail\BladeEmail\Components\Spacer;
+use BladeEmail\BladeEmail\Components\Text;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class BladeEmailServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'blade-email');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'blade-email');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../resources/views' => resource_path('views/vendor/blade-email'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/blade-email'),
             ], 'blade-email-views');
         }
 

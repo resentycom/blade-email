@@ -20,7 +20,8 @@
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",
-        "phpunit/phpunit": "^11.0"
+        "phpunit/phpunit": "^11.0",
+        "laravel/pint": "^1.24"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +39,10 @@
                 "BladeEmail\\BladeEmail\\BladeEmailServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "lint:fix": "./vendor/bin/pint --parallel",
+        "lint": "./vendor/bin/pint --parallel --dry"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

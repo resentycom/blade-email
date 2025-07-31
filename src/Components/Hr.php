@@ -12,12 +12,11 @@ class Hr extends BaseComponent
         $defaultStyle = [
             'width' => '100%',
             'border' => 'none',
-            'border-top' => '1px solid #eaeaea'
+            'border-top' => '1px solid #eaeaea',
         ];
-        
+
         $this->styleString = $this->mergeStyles($defaultStyle, $style);
     }
-
 
     public function render()
     {
