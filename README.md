@@ -412,7 +412,6 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Your Name](https://github.com/yourusername)
 - [All Contributors](../../contributors)
 
 Inspired by [React Email](https://react.email/) - bringing the same developer experience to Laravel.
