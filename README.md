@@ -5,9 +5,10 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/resentycom/blade-email/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/resentycom/blade-email/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/resenty/blade-email.svg?style=flat-square)](https://packagist.org/packages/resenty/blade-email)
 
+> This first iteration has been built with AI, so you should expect it to be unstable, we will work on making it more stable as we go on.
+
 High-quality, unstyled Blade components for creating beautiful emails in Laravel. Inspired by [React Email](https://react.email/), this package provides a comprehensive set of email-safe components that render perfectly across all major email clients.
 
-> This first iteration has been built with AI, so you should expect it to be unstable, we will work on making it more stable as we go on.
 
 ## Features
 
