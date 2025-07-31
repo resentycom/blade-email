@@ -7,6 +7,8 @@
 
 High-quality, unstyled Blade components for creating beautiful emails in Laravel. Inspired by [React Email](https://react.email/), this package provides a comprehensive set of email-safe components that render perfectly across all major email clients.
 
+> This first iteration has been built with AI, so you should expect it to be unstable, we will work on making it more stable as we go on.
+
 ## Features
 
 - 🎨 **22+ email-safe components** - Everything you need to build professional emails
