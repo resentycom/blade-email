@@ -25,4 +25,4 @@ jobs:
         run: composer global require laravel/pint
 
       - name: Run Pint
-        run: pint --parallel --dry
+        run: pint --parallel --test

@@ -42,7 +42,7 @@
     },
     "scripts": {
         "lint:fix": "./vendor/bin/pint --parallel",
-        "lint": "./vendor/bin/pint --parallel --dry"
+        "lint": "./vendor/bin/pint --parallel --test"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
