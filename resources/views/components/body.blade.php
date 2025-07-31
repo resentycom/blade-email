@@ -8,7 +8,7 @@
         'color' => '#333333',
     ];
 
-    // Handle style attribute - could be array or string
+    // Handle style attribute - could be arrayed or string
     $providedStyles = [];
     if (isset($style)) {
         $providedStyles = is_array($style) ? $style : [];
