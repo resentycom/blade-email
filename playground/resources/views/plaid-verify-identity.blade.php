@@ -1,13 +1,13 @@
-<x-email::html>
-    <x-email::head>
+<x-email-html>
+    <x-email-head>
         {{-- Preload logo for better performance --}}
         <link rel="preload" href="{{ $logoUrl ?? '/static/plaid-logo.png' }}" as="image" />
-    </x-email::head>
-    <x-email::html-body :style="[
+    </x-email-head>
+    <x-email-html-body :style="[
         'background-color' => '#ffffff',
         'font-family' => 'HelveticaNeue,Helvetica,Arial,sans-serif'
     ]">
-        <x-email::container :style="[
+        <x-email-container :style="[
             'max-width' => '360px',
             'background-color' => '#ffffff',
             'border' => '1px solid #ddd',
@@ -16,7 +16,7 @@
             'padding' => '68px 0 130px'
         ]">
 
-            <x-email::img
+            <x-email-img
                 src="{{ $logoUrl ?? '/static/plaid-logo.png' }}"
                 alt="Plaid"
                 width="212"
@@ -24,7 +24,7 @@
                 align="center"
                 :style="['margin' => '0 auto']" />
 
-            <x-email::text :style="[
+            <x-email-text :style="[
                 'font-size' => '11px',
                 'line-height' => '16px',
                 'color' => '#0a85ea',
@@ -36,9 +36,9 @@
                 'text-align' => 'center'
             ]">
                 VERIFY YOUR IDENTITY
-            </x-email::text>
+            </x-email-text>
 
-            <x-email::heading :level="1" :style="[
+            <x-email-heading :level="1" :style="[
                 'color' => '#000',
                 'display' => 'inline-block',
                 'font-family' => 'HelveticaNeue-Medium,Helvetica,Arial,sans-serif',
@@ -50,16 +50,16 @@
                 'text-align' => 'center'
             ]">
                 Enter the following code to finish linking Venmo.
-            </x-email::heading>
+            </x-email-heading>
 
-            <x-email::section :style="[
+            <x-email-section :style="[
                 'background' => 'rgba(0,0,0,.05)',
                 'border' => '1px solid rgba(0,0,0,.1)',
                 'margin' => '16px auto 14px',
                 'vertical-align' => 'middle',
                 'width' => '280px'
             ]">
-                <x-email::text :style="[
+                <x-email-text :style="[
                     'font-size' => '32px',
                     'line-height' => '40px',
                     'color' => '#000',
@@ -73,10 +73,10 @@
                     'text-align' => 'center'
                 ]">
                     {{ $validationCode ?? '144833' }}
-                </x-email::text>
-            </x-email::section>
+                </x-email-text>
+            </x-email-section>
 
-            <x-email::text :style="[
+            <x-email-text :style="[
                 'font-size' => '15px',
                 'line-height' => '23px',
                 'color' => '#444',
@@ -87,9 +87,9 @@
                 'text-align' => 'center'
             ]">
                 Not expecting this email?
-            </x-email::text>
+            </x-email-text>
 
-            <x-email::text :style="[
+            <x-email-text :style="[
                 'font-size' => '15px',
                 'line-height' => '23px',
                 'color' => '#444',
@@ -100,19 +100,19 @@
                 'text-align' => 'center'
             ]">
                 Contact
-                <x-email::link
+                <x-email-link
                     href="mailto:login@plaid.com"
                     :style="[
                         'color' => '#444',
                         'text-decoration-line' => 'none',
                         'text-decoration' => 'underline'
-                    ]">login@plaid.com</x-email::link>
+                    ]">login@plaid.com</x-email-link>
                 if you did not request this code.
-            </x-email::text>
+            </x-email-text>
 
-        </x-email::container>
+        </x-email-container>
 
-        <x-email::text :style="[
+        <x-email-text :style="[
             'font-size' => '12px',
             'line-height' => '23px',
             'color' => '#000',
@@ -124,7 +124,7 @@
             'text-align' => 'center'
         ]">
             SECURELY POWERED BY PLAID.
-        </x-email::text>
+        </x-email-text>
 
-    </x-email::html-body>
-</x-email::html>
+    </x-email-html-body>
+</x-email-html>

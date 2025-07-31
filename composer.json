@@ -1,5 +1,5 @@
 {
-    "name": "blade-email/blade-email",
+    "name": "resenty/blade-email",
     "description": "High-quality unstyled Blade components for creating beautiful emails in Laravel",
     "type": "library",
     "license": "MIT",

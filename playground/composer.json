@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "blade-email/blade-email": "@dev",
+        "resenty/blade-email": "@dev",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "phiki/phiki": "^1.1"

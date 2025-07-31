@@ -1,105 +1,246 @@
-# Blade Email Components
+# Blade Email
 
-High-quality unstyled Blade components for creating beautiful emails in Laravel 12. Inspired by [React Email](https://react.email/components), this package provides a comprehensive set of email-safe components that work across all major email clients.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/resenty/blade-email.svg?style=flat-square)](https://packagist.org/packages/resenty/blade-email)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/resentycom/blade-email/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/resentycom/blade-email/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/resentycom/blade-email/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/resentycom/blade-email/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/resenty/blade-email.svg?style=flat-square)](https://packagist.org/packages/resenty/blade-email)
+
+High-quality, unstyled Blade components for creating beautiful emails in Laravel. Inspired by [React Email](https://react.email/), this package provides a comprehensive set of email-safe components that render perfectly across all major email clients.
+
+## Features
+
+- 🎨 **22+ email-safe components** - Everything you need to build professional emails
+- 📱 **Perfect cross-client compatibility** - Tested across Gmail, Outlook, Apple Mail, and more
+- 🛡️ **Type-safe & validated** - Built-in validation and error handling for reliable email rendering
+- 🎯 **Unstyled by default** - Complete control over your email styling
+- 🚀 **Laravel-native** - Built specifically for Laravel using modern Blade component architecture
+- 📦 **Zero configuration** - Works out of the box with sensible defaults
+- 🔧 **Extensible** - Easy to customize and extend for your specific needs
 
 ## Installation
 
+You can install the package via composer:
+
 ```bash
-composer require blade-email/blade-email
+composer require resenty/blade-email
 ```
 
-The package will automatically register itself via Laravel's package discovery.
+The package will automatically register its service provider.
 
 ## Usage
 
-### Basic Email Structure
+### Basic Example
 
 ```blade
-<x-blade-email::layout title="Welcome Email" preheader="Thanks for joining us!">
-    <x-blade-email::header
-        logo="https://example.com/logo.png"
-        title="Welcome to Our Platform"
-    />
-
-    <x-blade-email::body>
-        <x-blade-email::text>
-            Hello {{ $user->name }},
-        </x-blade-email::text>
-
-        <x-blade-email::text>
-            Welcome to our platform! We're excited to have you on board.
-        </x-blade-email::text>
-
-        <x-blade-email::button href="https://example.com/get-started" backgroundColor="#007bff">
-            Get Started
-        </x-blade-email::button>
-    </x-blade-email::body>
-
-    <x-blade-email::footer>
-        <x-blade-email::text fontSize="12px" color="#666666">
-            © 2024 Your Company. All rights reserved.
-        </x-blade-email::text>
-    </x-blade-email::footer>
-</x-blade-email::layout>
+<x-email-html>
+    <x-email-head>
+        <title>Welcome to our platform!</title>
+    </x-email-head>
+    <x-email-html-body>
+        <x-email-container>
+            <x-email-heading :level="1">
+                Welcome to our platform!
+            </x-email-heading>
+            
+            <x-email-text>
+                Thanks for signing up. We're excited to have you on board.
+            </x-email-text>
+            
+            <x-email-button href="https://example.com/verify">
+                Verify Your Account
+            </x-email-button>
+        </x-email-container>
+    </x-email-html-body>
+</x-email-html>
 ```
 
-## Components
+### Advanced Example with Styling
 
-### Layout
-The main email wrapper with proper HTML email structure.
-
-**Props:**
-- `title` - Email title for `<title>` tag
-- `preheader` - Preview text shown in email clients
-- `styles` - Additional CSS styles
-
-### Header
-Email header section with optional logo and title.
-
-**Props:**
-- `logo` - Logo image URL
-- `logoAlt` - Logo alt text
-- `logoWidth` - Logo width (default: 200px)
-- `title` - Header title text
-- `titleSize` - Title font size (default: 24px)
-- `titleColor` - Title color (default: #333333)
-- `align` - Alignment (default: center)
-- `padding` - Padding (default: 40px 40px 20px 40px)
-
-### Head
-HTML head section for meta tags, fonts, and preload resources.
-
-**Usage:**
 ```blade
-<x-email::head>
-    {{-- Preload resources for better performance --}}
-    <link rel="preload" href="/fonts/custom-font.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/images/logo.png" as="image" />
-
-    {{-- Load custom fonts --}}
-    <x-email::font ... />
-
-    {{-- Any other head content --}}
-</x-email::head>
+<x-email-html>
+    <x-email-head>
+        <title>Order Confirmation</title>
+        <x-email-font 
+            fontFamily="Inter" 
+            fallbackFontFamily="Arial, sans-serif"
+            :webFont="[
+                'url' => 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap',
+                'format' => 'woff2'
+            ]" />
+    </x-email-head>
+    <x-email-html-body :style="['background-color' => '#f6f9fc']">
+        <x-email-container :style="[
+            'max-width' => '600px',
+            'background-color' => '#ffffff',
+            'padding' => '40px',
+            'border-radius' => '8px',
+            'margin' => '40px auto'
+        ]">
+            <x-email-img 
+                src="https://example.com/logo.png" 
+                alt="Company Logo"
+                width="150"
+                :style="['margin-bottom' => '32px']" />
+            
+            <x-email-heading :level="1" :style="[
+                'color' => '#1a1a1a',
+                'font-size' => '24px',
+                'margin-bottom' => '16px'
+            ]">
+                Order Confirmation #12345
+            </x-email-heading>
+            
+            <x-email-text :style="[
+                'color' => '#666666',
+                'line-height' => '1.6',
+                'margin-bottom' => '24px'
+            ]">
+                Thank you for your order! We'll send you shipping confirmation when your items are on the way.
+            </x-email-text>
+            
+            <x-email-section :style="[
+                'background-color' => '#f8fafc',
+                'padding' => '24px',
+                'border-radius' => '6px',
+                'margin-bottom' => '24px'
+            ]">
+                <x-email-text :style="['font-weight' => '600', 'margin-bottom' => '8px']">
+                    Order Details:
+                </x-email-text>
+                <x-email-text :style="['margin' => '0']">
+                    2x Product Name - $49.99 each
+                </x-email-text>
+            </x-email-section>
+            
+            <x-email-button 
+                href="https://example.com/order/12345"
+                :style="[
+                    'background-color' => '#0066cc',
+                    'color' => '#ffffff',
+                    'padding' => '12px 24px',
+                    'border-radius' => '6px',
+                    'font-weight' => '600'
+                ]">
+                View Order Details
+            </x-email-button>
+            
+            <x-email-hr :style="['margin' => '32px 0', 'border-color' => '#e5e7eb']" />
+            
+            <x-email-text :style="[
+                'color' => '#999999',
+                'font-size' => '14px',
+                'text-align' => 'center'
+            ]">
+                If you have any questions, reply to this email or contact our 
+                <x-email-link href="mailto:support@example.com">support team</x-email-link>.
+            </x-email-text>
+        </x-email-container>
+    </x-email-html-body>
+</x-email-html>
 ```
 
-### Code Block
-Syntax-highlighted code blocks powered by [Phiki](https://github.com/phikiphp/phiki).
+## Available Components
 
-**Props:**
-- `language` - Programming language (php, javascript, python, etc.)
-- `theme` - Color theme (github-light, github-dark, monokai, etc.)
-- `title` - Optional title bar
-- `showLineNumbers` - Show line numbers (default: true)
+### Structure Components
+- `<x-email-html>` - Root HTML document with email-safe DOCTYPE
+- `<x-email-head>` - Document head with essential meta tags
+- `<x-email-html-body>` - HTML body element
+- `<x-email-body>` - Email body wrapper with table-based layout
 
-**Usage:**
+### Layout Components
+- `<x-email-container>` - Centered container with max-width
+- `<x-email-section>` - Content section wrapper
+- `<x-email-row>` - Table row for multi-column layouts
+- `<x-email-column>` - Table cell for column content
+
+### Content Components
+- `<x-email-text>` - Paragraph text with customizable tag
+- `<x-email-heading>` - Headings (h1-h6) with level validation
+- `<x-email-link>` - Styled anchor links
+- `<x-email-button>` - Call-to-action buttons
+- `<x-email-img>` - Images with proper email attributes
+
+### Utility Components
+- `<x-email-spacer>` - Vertical spacing with customizable height
+- `<x-email-hr>` - Horizontal rules/dividers
+- `<x-email-divider>` - Styled content dividers
+- `<x-email-preview>` - Email preview text (hidden in email clients)
+
+### Advanced Components
+- `<x-email-font>` - Web font loading with fallbacks
+- `<x-email-code-block>` - Syntax-highlighted code blocks
+- `<x-email-header>` - Semantic header sections
+- `<x-email-footer>` - Semantic footer sections
+- `<x-email-layout>` - Generic layout wrapper
+
+## Component Documentation
+
+### Common Props
+
+All components support standard HTML attributes and these common props:
+
+- `style` - Array or string of CSS styles
+- Standard HTML attributes (id, class, data-*, etc.)
+
+### Button Component
 ```blade
-<x-email::code-block
+<x-email-button 
+    href="https://example.com"     {{-- Required --}}
+    target="_blank"                {{-- Optional: _blank, _self, _parent, _top --}}
+    :style="['background-color' => '#007bff']">
+    Click Me
+</x-email-button>
+```
+
+### Image Component
+```blade
+<x-email-img 
+    src="https://example.com/image.jpg"  {{-- Required --}}
+    alt="Description"                    {{-- Recommended for accessibility --}}
+    width="300"                          {{-- Optional --}}
+    height="200"                         {{-- Optional --}}
+    :style="['border-radius' => '8px']" />
+```
+
+### Text Component
+```blade
+<x-email-text 
+    tag="p"                              {{-- Optional: p, span, div, h1-h6 --}}
+    :style="['color' => '#333333']">
+    Your content here
+</x-email-text>
+```
+
+### Heading Component
+```blade
+<x-email-heading 
+    :level="2"                           {{-- Optional: 1-6 or h1-h6 --}}
+    :style="['color' => '#1a1a1a']">
+    Your Heading
+</x-email-heading>
+```
+
+### Font Component
+```blade
+<x-email-font 
+    fontFamily="Inter"
+    fallbackFontFamily="Arial, sans-serif"
+    :fontWeight="400"
+    :webFont="[
+        'url' => 'https://fonts.googleapis.com/css2?family=Inter',
+        'format' => 'woff2'
+    ]" />
+```
+
+### Code Block Component
+```blade
+<x-email-code-block
     language="php"
     theme="github-light"
     title="Example.php"
+    :showLineNumbers="true"
     code="<?php
-
+    
 namespace App\Mail;
 
 use Illuminate\Mail\Mailable;
@@ -109,163 +250,77 @@ class WelcomeEmail extends Mailable
     public function build()
     {
         return $this->view('emails.welcome')
-                    ->subject('Welcome to our platform!');
+                    ->subject('Welcome!');
     }
 }" />
 ```
 
-**Supported Languages:** 200+ including PHP, JavaScript, Python, Java, Go, Rust, SQL, HTML, CSS, JSON, YAML, and more.
+**Supported Languages:** PHP, JavaScript, TypeScript, Python, Java, Go, Rust, SQL, HTML, CSS, JSON, YAML, and more.
 
 **Available Themes:** github-light, github-dark, vs-code-light, vs-code-dark, monokai, dracula, one-dark, nord, tokyo-night, catppuccin, solarized-light, solarized-dark.
 
-### Body
-Main content area with typography styling.
+### Spacer Component
+```blade
+<x-email-spacer 
+    height="32px"                        {{-- Optional: any CSS height value --}}
+    :style="['background-color' => 'transparent']" />
+```
 
-**Props:**
-- `padding` - Padding (default: 20px 40px)
-- `fontSize` - Font size (default: 16px)
-- `lineHeight` - Line height (default: 1.6)
-- `textColor` - Text color (default: #333333)
+## Styling
 
-### Button
-Email-safe button component with Outlook compatibility.
+### Array-based Styling (Recommended)
+```blade
+<x-email-text :style="[
+    'color' => '#333333',
+    'font-size' => '16px',
+    'line-height' => '1.6',
+    'margin-bottom' => '16px'
+]">
+    Content here
+</x-email-text>
+```
 
-**Props:**
-- `href` - Button URL
-- `backgroundColor` - Background color (default: #007bff)
-- `textColor` - Text color (default: #ffffff)
-- `borderRadius` - Border radius (default: 4px)
-- `padding` - Button padding (default: 12px 24px)
-- `fontSize` - Font size (default: 16px)
-- `fontWeight` - Font weight (default: bold)
-- `align` - Alignment (default: center)
-
-### Text
-Typography component for paragraphs and headings.
-
-**Props:**
-- `tag` - HTML tag (default: p)
-- `fontSize` - Font size (default: 16px)
-- `lineHeight` - Line height (default: 1.6)
-- `color` - Text color (default: #333333)
-- `fontFamily` - Font family (default: Arial, sans-serif)
-- `fontWeight` - Font weight (default: normal)
-- `textAlign` - Text alignment (default: left)
-- `margin` - Margin (default: 0 0 16px 0)
-
-### Footer
-Email footer section.
-
-**Props:**
-- `align` - Alignment (default: left)
-- `padding` - Padding (default: 20px 40px 40px 40px)
-- `borderTop` - Top border (default: none)
-- `fontSize` - Font size (default: 14px)
-- `lineHeight` - Line height (default: 1.4)
-- `textColor` - Text color (default: #666666)
-
-### Container
-Responsive container with max-width constraints.
-
-**Props:**
-- `maxWidth` - Maximum width (default: 600px)
-- `padding` - Padding (default: 0)
-- `backgroundColor` - Background color (default: transparent)
-- `align` - Alignment (default: center)
-
-### Row & Column
-Layout components for creating multi-column layouts.
-
-**Row Props:**
-- `backgroundColor` - Background color (default: transparent)
-
-**Column Props:**
-- `width` - Column width (default: 100%)
-- `align` - Alignment (default: left)
-- `verticalAlign` - Vertical alignment (default: top)
-- `padding` - Padding (default: 0)
-
-### Spacer
-Adds vertical spacing between elements.
-
-**Props:**
-- `height` - Spacer height (default: 20px)
-
-### Divider
-Horizontal divider line.
-
-**Props:**
-- `padding` - Padding (default: 20px 40px)
-- `thickness` - Line thickness (default: 1px)
-- `style` - Line style (default: solid)
-- `color` - Line color (default: #e0e0e0)
-
-### Font
-Web font loader with email client compatibility and fallbacks.
-
-**Props:**
-- `fontFamily` - The font family name (default: Arial)
-- `fallbackFontFamily` - Fallback font family (default: sans-serif)
-- `webFont` - Array with 'url' and 'format' keys for web font
-- `fontWeight` - Font weight (default: 400)
-- `fontStyle` - Font style (default: normal)
-- `preload` - Whether to preload the font (default: true)
-
-### Section
-Generic section wrapper.
-
-**Props:**
-- `backgroundColor` - Background color (default: transparent)
-- `padding` - Padding (default: 0)
+### String-based Styling
+```blade
+<x-email-text style="color: #333333; font-size: 16px; line-height: 1.6;">
+    Content here
+</x-email-text>
+```
 
 ## Advanced Usage
 
 ### Two-Column Layout
 
 ```blade
-<x-blade-email::layout title="Newsletter">
-    <x-blade-email::body>
-        <x-blade-email::row>
-            <x-blade-email::column width="50%" padding="0 10px 0 0">
-                <x-blade-email::text>Left column content</x-blade-email::text>
-            </x-blade-email::column>
-            <x-blade-email::column width="50%" padding="0 0 0 10px">
-                <x-blade-email::text>Right column content</x-blade-email::text>
-            </x-blade-email::column>
-        </x-blade-email::row>
-    </x-blade-email::body>
-</x-blade-email::layout>
-```
-
-### Custom Styling
-
-```blade
-<x-blade-email::layout
-    title="Styled Email"
-    styles="
-        .custom-header { background: linear-gradient(45deg, #ff6b6b, #4ecdc4); }
-        .highlight { background-color: #fff3cd; padding: 15px; border-radius: 4px; }
-    "
->
-    <x-blade-email::section backgroundColor="#f8f9fa" padding="40px">
-        <x-blade-email::text class="highlight">
-            This is a highlighted message!
-        </x-blade-email::text>
-    </x-blade-email::section>
-</x-blade-email::layout>
+<x-email-html>
+    <x-email-head>
+        <title>Newsletter</title>
+    </x-email-head>
+    <x-email-html-body>
+        <x-email-container>
+            <x-email-row>
+                <x-email-column :style="['width' => '50%', 'padding' => '0 10px 0 0']">
+                    <x-email-text>Left column content</x-email-text>
+                </x-email-column>
+                <x-email-column :style="['width' => '50%', 'padding' => '0 0 0 10px']">
+                    <x-email-text>Right column content</x-email-text>
+                </x-email-column>
+            </x-email-row>
+        </x-email-container>
+    </x-email-html-body>
+</x-email-html>
 ```
 
 ### Using Web Fonts
 
 ```blade
-<x-email::html>
-    <x-email::head>
+<x-email-html>
+    <x-email-head>
         {{-- Preload fonts for better performance --}}
         <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7.woff2" as="font" type="font/woff2" crossorigin />
-
+        
         {{-- Load Google Fonts: Inter --}}
-        <x-email::font
+        <x-email-font
             fontFamily="Inter"
             fallbackFontFamily="Arial, sans-serif"
             :webFont="[
@@ -273,26 +328,53 @@ Generic section wrapper.
                 'format' => 'woff2'
             ]"
             :fontWeight="400" />
+    </x-email-head>
 
-        <x-email::font
-            fontFamily="Inter"
-            fallbackFontFamily="Arial, sans-serif"
-            :webFont="[
-                'url' => 'https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7.woff2',
-                'format' => 'woff2'
-            ]"
-            :fontWeight="700" />
-    </x-email::head>
-
-    <x-email::html-body style="font-family: Inter, Arial, sans-serif;">
-        <x-email::text style="font-weight: 700;">
-            This text uses Inter Bold with Arial fallback!
-        </x-email::text>
-    </x-email::html-body>
-</x-email::html>
+    <x-email-html-body :style="['font-family' => 'Inter, Arial, sans-serif']">
+        <x-email-container>
+            <x-email-text :style="['font-weight' => '400']">
+                This text uses Inter with Arial fallback!
+            </x-email-text>
+        </x-email-container>
+    </x-email-html-body>
+</x-email-html>
 ```
 
-## Publishing Views
+## Email Client Compatibility
+
+This package is tested and works perfectly across:
+
+- ✅ Gmail (Web, iOS, Android)
+- ✅ Outlook (2016+, Web, iOS, Android) 
+- ✅ Apple Mail (macOS, iOS)
+- ✅ Yahoo Mail
+- ✅ AOL Mail
+- ✅ Thunderbird
+- ✅ Samsung Email
+- ✅ Windows Mail
+
+The components use table-based layouts and inline styles for maximum compatibility.
+
+## Development
+
+### Running the Playground
+
+The package includes a playground for testing components:
+
+```bash
+cd playground
+composer install
+php artisan serve
+```
+
+Visit the following URLs to see example emails:
+- `http://localhost:8000/plaid-verify` - Identity verification email
+- `http://localhost:8000/vercel-invite` - Team invitation email  
+- `http://localhost:8000/nike-receipt` - Order receipt email
+- `http://localhost:8000/font-example` - Web font example
+- `http://localhost:8000/code-example` - Code block example
+
+### Publishing Views
 
 To customize the component views, publish them to your application:
 
@@ -302,23 +384,37 @@ php artisan vendor:publish --tag=blade-email-views
 
 This will copy all component views to `resources/views/vendor/blade-email/components/`.
 
-## Email Client Compatibility
+### Testing
 
-This package is designed to work across all major email clients including:
+```bash
+composer test
+```
 
-- Gmail
-- Outlook (all versions)
-- Apple Mail
-- Yahoo Mail
-- Thunderbird
-- Mobile email clients
+### Code Style
 
-The components use table-based layouts and inline styles for maximum compatibility.
+```bash
+composer format
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Your Name](https://github.com/yourusername)
+- [All Contributors](../../contributors)
+
+Inspired by [React Email](https://react.email/) - bringing the same developer experience to Laravel.
 
 ## License
 
-This package is open-sourced software licensed under the [MIT license](LICENSE).
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

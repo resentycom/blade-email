@@ -1,21 +1,3 @@
-@php
-    // Handle font properties
-    $fontFamily = $fontFamily ?? 'Arial';
-    $fallbackFontFamily = $fallbackFontFamily ?? 'sans-serif';
-    $fontWeight = $fontWeight ?? 400;
-    $fontStyle = $fontStyle ?? 'normal';
-
-    // Handle webFont object (expects array with 'url' and 'format' keys)
-    $webFont = $webFont ?? null;
-    $preload = $preload ?? true;
-
-    // Build the full font stack
-    $fontStack = $fallbackFontFamily;
-    if ($webFont && isset($webFont['url'])) {
-        $fontStack = "{$fontFamily}, {$fallbackFontFamily}";
-    }
-@endphp
-
 @if($webFont && isset($webFont['url']))
     {{-- Preload the web font for better performance --}}
     @if($preload)

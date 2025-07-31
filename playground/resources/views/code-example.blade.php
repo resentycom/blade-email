@@ -1,11 +1,11 @@
-<x-email::html>
-    <x-email::head>
+<x-email-html>
+    <x-email-head>
         {{-- Preload fonts for better performance --}}
         <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7.woff2" as="font" type="font/woff2" crossorigin />
 
         {{-- Load Google Fonts: Inter --}}
-        <x-email::font
+        <x-email-font
             fontFamily="Inter"
             fallbackFontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
             :webFont="[
@@ -16,7 +16,7 @@
             fontStyle="normal" />
 
         {{-- Load Inter Medium --}}
-        <x-email::font
+        <x-email-font
             fontFamily="Inter"
             fallbackFontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
             :webFont="[
@@ -25,15 +25,15 @@
             ]"
             :fontWeight="500"
             fontStyle="normal" />
-    </x-email::head>
+    </x-email-head>
 
-    <x-email::html-body :style="[
+    <x-email-html-body :style="[
         'background-color' => '#f6f9fc',
         'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif'
     ]">
-        <x-email::preview>Code Examples with Syntax Highlighting</x-email::preview>
+        <x-email-preview>Code Examples with Syntax Highlighting</x-email-preview>
 
-        <x-email::container :style="[
+        <x-email-container :style="[
             'background-color' => '#ffffff',
             'max-width' => '700px',
             'margin' => '40px auto',
@@ -42,7 +42,7 @@
         ]">
 
             {{-- Header --}}
-            <x-email::heading :level="1" :style="[
+            <x-email-heading :level="1" :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-weight' => '700',
                 'font-size' => '28px',
@@ -51,10 +51,10 @@
                 'margin' => '0 0 32px 0'
             ]">
                 Developer Newsletter
-            </x-email::heading>
+            </x-email-heading>
 
             {{-- Introduction --}}
-            <x-email::text :style="[
+            <x-email-text :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-size' => '16px',
                 'line-height' => '1.6',
@@ -62,10 +62,10 @@
                 'margin' => '0 0 32px 0'
             ]">
                 Welcome to our developer newsletter! Here's an example showcasing how to include beautifully formatted code in your email templates using the Blade Email code block component.
-            </x-email::text>
+            </x-email-text>
 
             {{-- PHP Example --}}
-            <x-email::heading :level="2" :style="[
+            <x-email-heading :level="2" :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-weight' => '600',
                 'font-size' => '20px',
@@ -73,12 +73,12 @@
                 'margin' => '32px 0 16px 0'
             ]">
                 Code Examples with Syntax Highlighting
-            </x-email::heading>
+            </x-email-heading>
 
             {{-- Footer --}}
-            <x-email::spacer height="40px" />
+            <x-email-spacer height="40px" />
 
-            <x-email::hr :style="[
+            <x-email-hr :style="[
                 'border-color' => '#e5e7eb',
                 'margin' => '0 0 32px 0'
             ]" />
@@ -109,13 +109,13 @@ class EmailController extends Controller
 }';
             @endphp
 
-            <x-email::code-block
+            <x-email-code-block
                 language="php"
                 theme="github-light"
                 :code="$phpCode" />
 
             {{-- Add a dark theme example --}}
-            <x-email::heading :level="2" :style="[
+            <x-email-heading :level="2" :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-weight' => '600',
                 'font-size' => '20px',
@@ -123,16 +123,16 @@ class EmailController extends Controller
                 'margin' => '32px 0 16px 0'
             ]">
                 Dark Theme Example
-            </x-email::heading>
+            </x-email-heading>
 
-            <x-email::code-block
+            <x-email-code-block
                 language="php"
                 theme="github-dark"
                 title="EmailService.php (Dark Theme)"
                 :code="$phpCode" />
 
             {{-- Add JavaScript Example --}}
-            <x-email::heading :level="2" :style="[
+            <x-email-heading :level="2" :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-weight' => '600',
                 'font-size' => '20px',
@@ -140,7 +140,7 @@ class EmailController extends Controller
                 'margin' => '32px 0 16px 0'
             ]">
                 JavaScript API Client
-            </x-email::heading>
+            </x-email-heading>
 
             @php
                 $jsCode = 'const sendEmail = async (emailData) => {
@@ -168,14 +168,14 @@ class EmailController extends Controller
 };';
             @endphp
 
-            <x-email::code-block
+            <x-email-code-block
                 language="javascript"
                 theme="github-light"
                 title="api-client.js"
                 :code="$jsCode" />
 
             {{-- Test different themes --}}
-            <x-email::heading :level="2" :style="[
+            <x-email-heading :level="2" :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-weight' => '600',
                 'font-size' => '20px',
@@ -183,9 +183,9 @@ class EmailController extends Controller
                 'margin' => '32px 0 16px 0'
             ]">
                 Monokai Theme Example
-            </x-email::heading>
+            </x-email-heading>
 
-            <x-email::code-block
+            <x-email-code-block
                 language="python"
                 theme="monokai"
                 title="example.py (Monokai Theme)"
@@ -202,7 +202,7 @@ class EmailController extends Controller
 
     print(f'Email sent to {to}!')" />
 
-            <x-email::text :style="[
+            <x-email-text :style="[
                 'font-family' => 'Inter, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif',
                 'font-size' => '14px',
                 'line-height' => '1.5',
@@ -211,9 +211,9 @@ class EmailController extends Controller
                 'margin' => '0'
             ]">
                 Happy coding! 🚀<br>
-                Built with <x-email::link href="https://github.com/phikiphp/phiki" style="color: #3b82f6; text-decoration: underline;">Phiki</x-email::link> syntax highlighting
-            </x-email::text>
+                Built with <x-email-link href="https://github.com/phikiphp/phiki" style="color: #3b82f6; text-decoration: underline;">Phiki</x-email-link> syntax highlighting
+            </x-email-text>
 
-        </x-email::container>
-    </x-email::html-body>
-</x-email::html>
+        </x-email-container>
+    </x-email-html-body>
+</x-email-html>
