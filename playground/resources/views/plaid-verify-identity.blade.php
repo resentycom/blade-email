@@ -1,5 +1,8 @@
 <x-email::html>
-    <x-email::head :preload="[$logoUrl ?? '/static/plaid-logo.png']" />
+    <x-email::head>
+        {{-- Preload logo for better performance --}}
+        <link rel="preload" href="{{ $logoUrl ?? '/static/plaid-logo.png' }}" as="image" />
+    </x-email::head>
     <x-email::html-body :style="[
         'background-color' => '#ffffff',
         'font-family' => 'HelveticaNeue,Helvetica,Arial,sans-serif'
@@ -7,9 +10,7 @@
         <x-email::container :style="[
             'max-width' => '360px',
             'background-color' => '#ffffff',
-            'border' => '1px solid #eee',
-            'border-radius' => '5px',
-            'box-shadow' => '0 5px 10px rgba(20,50,70,.2)',
+            'border' => '1px solid #ddd',
             'margin-top' => '20px',
             'margin' => '0 auto',
             'padding' => '68px 0 130px'
@@ -32,10 +33,9 @@
                 'height' => '16px',
                 'letter-spacing' => '0',
                 'margin' => '16px 8px 8px 8px',
-                'text-transform' => 'uppercase',
                 'text-align' => 'center'
             ]">
-                Verify Your Identity
+                VERIFY YOUR IDENTITY
             </x-email::text>
 
             <x-email::heading :level="1" :style="[
@@ -54,7 +54,7 @@
 
             <x-email::section :style="[
                 'background' => 'rgba(0,0,0,.05)',
-                'border-radius' => '4px',
+                'border' => '1px solid rgba(0,0,0,.1)',
                 'margin' => '16px auto 14px',
                 'vertical-align' => 'middle',
                 'width' => '280px'
@@ -121,10 +121,9 @@
             'margin' => '0',
             'margin-top' => '20px',
             'font-family' => 'HelveticaNeue,Helvetica,Arial,sans-serif',
-            'text-align' => 'center',
-            'text-transform' => 'uppercase'
+            'text-align' => 'center'
         ]">
-            Securely powered by Plaid.
+            SECURELY POWERED BY PLAID.
         </x-email::text>
 
     </x-email::html-body>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "043e283b69271585c1fc4b83bd91c7d4",
+    "content-hash": "fec867993e806e06d47460299a155f2d",
     "packages": [
         {
             "name": "blade-email/blade-email",
@@ -12,12 +12,14 @@
             "dist": {
                 "type": "path",
                 "url": "..",
-                "reference": "3f377c4fb7c16c0dc8fd80d99d670ab65c1c5021"
+                "reference": "974c2e04669aa86b02eac6159619c655009de0d1"
             },
             "require": {
                 "illuminate/support": "^12.0",
                 "illuminate/view": "^12.0",
-                "php": "^8.2"
+                "phiki/phiki": "^1.1",
+                "php": "^8.2",
+                "tijsverkoyen/css-to-inline-styles": "^2.3"
             },
             "require-dev": {
                 "orchestra/testbench": "^10.0",
@@ -2555,6 +2557,60 @@
                 }
             ],
             "time": "2025-05-08T08:14:37+00:00"
+        },
+        {
+            "name": "phiki/phiki",
+            "version": "v1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phikiphp/phiki.git",
+                "reference": "3174d8cb309bdccc32b7a33500379de76148256b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phikiphp/phiki/zipball/3174d8cb309bdccc32b7a33500379de76148256b",
+                "reference": "3174d8cb309bdccc32b7a33500379de76148256b",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^2.5.3",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "illuminate/support": "^11.30",
+                "laravel/pint": "^1.18.1",
+                "pestphp/pest": "^3.5.1",
+                "phpstan/extension-installer": "^1.4.3",
+                "phpstan/phpstan": "^2.0",
+                "symfony/var-dumper": "^7.1.6"
+            },
+            "bin": [
+                "bin/phiki"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phiki\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Chandler",
+                    "email": "support@ryangjchandler.co.uk",
+                    "homepage": "https://ryangjchandler.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Syntax highlighting using TextMate grammars in PHP.",
+            "support": {
+                "issues": "https://github.com/phikiphp/phiki/issues",
+                "source": "https://github.com/phikiphp/phiki/tree/v1.1.6"
+            },
+            "time": "2025-06-06T20:18:29+00:00"
         },
         {
             "name": "phpoption/phpoption",

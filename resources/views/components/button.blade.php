@@ -1,14 +1,14 @@
 @php
     // Default props matching React Email
     $target = $target ?? '_blank';
-    
+
     // Default styles for better usability
     $defaultStyle = [
         'color' => '#000',
         'text-decoration' => 'none',
         'display' => 'inline-block'
     ];
-    
+
     // Merge with provided styles (array-first approach)
     $providedStyle = $style ?? [];
     if (is_string($providedStyle)) {

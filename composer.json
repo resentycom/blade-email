@@ -13,7 +13,10 @@
         "php": "^8.2",
         "illuminate/support": "^12.0",
         "illuminate/view": "^12.0",
-        "tijsverkoyen/css-to-inline-styles": "^2.3"
+        "tijsverkoyen/css-to-inline-styles": "^2.3",
+        "phiki/phiki": "^1.1",
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",

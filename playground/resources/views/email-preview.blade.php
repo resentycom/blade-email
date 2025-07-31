@@ -19,9 +19,28 @@
 
                 <x-email::row>
                     <x-email::column>
-                        <x-email::button href="https://example.com" color="blue">
-                            Click Me!
-                        </x-email::button>
+                        <x-email::button
+                        href="{{ $inviteUrl ?? 'https://vercel.com' }}"
+                        :style="[
+                            'border' => '2px solid rgb(0,0,0)',
+                            'background-color' => 'rgb(0,0,0)',
+                            'padding-left' => '20px',
+                            'padding-right' => '20px',
+                            'padding-top' => '12px',
+                            'padding-bottom' => '12px',
+                            'text-align' => 'center',
+                            'font-weight' => '600',
+                            'font-size' => '12px',
+                            'color' => 'rgb(255,255,255)',
+                            'text-decoration-line' => 'none',
+                            'line-height' => '100%',
+                            'text-decoration' => 'none',
+                            'display' => 'inline-block',
+                            'max-width' => '100%',
+                            'mso-padding-alt' => '0px'
+                        ]">
+                        Join the team
+                    </x-email::button>
                     </x-email::column>
                 </x-email::row>
 
@@ -48,7 +67,15 @@
             </x-email::section>
         </x-email::body>
 
-        <x-email::footer>
+        <x-email::footer :style="[
+            'background-color' => 'rgb(0,0,0)',
+            'color' => 'rgb(255,255,255)',
+            'padding-left' => '20px',
+            'padding-right' => '20px',
+            'padding-top' => '12px',
+            'padding-bottom' => '12px',
+            'text-align' => 'center',
+        ]">
             <x-email::text>
                 <p>&copy; 2024 Your Company. All rights reserved.</p>
                 <p>123 Main St, City, Country</p>

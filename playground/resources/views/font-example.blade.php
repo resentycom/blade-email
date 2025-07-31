@@ -1,5 +1,9 @@
 <x-email::html>
     <x-email::head>
+        {{-- Preload font files for better performance --}}
+        <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7.woff2" as="font" type="font/woff2" crossorigin />
+
         {{-- Load Google Fonts: Inter --}}
         <x-email::font
             fontFamily="Inter"
@@ -34,8 +38,7 @@
             'background-color' => '#ffffff',
             'margin' => '40px auto',
             'padding' => '40px',
-            'border-radius' => '8px',
-            'box-shadow' => '0 4px 6px rgba(0, 0, 0, 0.1)'
+            'border' => '1px solid #e5e5e5'
         ]">
 
             <x-email::heading :level="1" :style="[
@@ -74,7 +77,7 @@
             <x-email::section :style="[
                 'background-color' => '#f3f4f6',
                 'padding' => '20px',
-                'border-radius' => '6px',
+                'border' => '1px solid #e5e7eb',
                 'margin' => '0 0 32px 0'
             ]">
                 <x-email::text :style="[
@@ -112,7 +115,7 @@
                     'font-weight' => '700',
                     'font-size' => '16px',
                     'padding' => '16px 32px',
-                    'border-radius' => '6px',
+                    'border' => '2px solid #3b82f6',
                     'text-decoration' => 'none',
                     'display' => 'inline-block'
                 ]">

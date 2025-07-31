@@ -66,6 +66,58 @@ Email header section with optional logo and title.
 - `align` - Alignment (default: center)
 - `padding` - Padding (default: 40px 40px 20px 40px)
 
+### Head
+HTML head section for meta tags, fonts, and preload resources.
+
+**Usage:**
+```blade
+<x-email::head>
+    {{-- Preload resources for better performance --}}
+    <link rel="preload" href="/fonts/custom-font.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/images/logo.png" as="image" />
+
+    {{-- Load custom fonts --}}
+    <x-email::font ... />
+
+    {{-- Any other head content --}}
+</x-email::head>
+```
+
+### Code Block
+Syntax-highlighted code blocks powered by [Phiki](https://github.com/phikiphp/phiki).
+
+**Props:**
+- `language` - Programming language (php, javascript, python, etc.)
+- `theme` - Color theme (github-light, github-dark, monokai, etc.)
+- `title` - Optional title bar
+- `showLineNumbers` - Show line numbers (default: true)
+
+**Usage:**
+```blade
+<x-email::code-block
+    language="php"
+    theme="github-light"
+    title="Example.php"
+    code="<?php
+
+namespace App\Mail;
+
+use Illuminate\Mail\Mailable;
+
+class WelcomeEmail extends Mailable
+{
+    public function build()
+    {
+        return $this->view('emails.welcome')
+                    ->subject('Welcome to our platform!');
+    }
+}" />
+```
+
+**Supported Languages:** 200+ including PHP, JavaScript, Python, Java, Go, Rust, SQL, HTML, CSS, JSON, YAML, and more.
+
+**Available Themes:** github-light, github-dark, vs-code-light, vs-code-dark, monokai, dracula, one-dark, nord, tokyo-night, catppuccin, solarized-light, solarized-dark.
+
 ### Body
 Main content area with typography styling.
 
@@ -206,34 +258,38 @@ Generic section wrapper.
 ### Using Web Fonts
 
 ```blade
-<x-blade-email::layout title="Beautiful Typography">
-    {{-- Load Google Fonts in the head --}}
-    <x-slot name="head">
-        <x-blade-email::font
-            fontFamily="Roboto"
+<x-email::html>
+    <x-email::head>
+        {{-- Preload fonts for better performance --}}
+        <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7.woff2" as="font" type="font/woff2" crossorigin />
+
+        {{-- Load Google Fonts: Inter --}}
+        <x-email::font
+            fontFamily="Inter"
             fallbackFontFamily="Arial, sans-serif"
             :webFont="[
-                'url' => 'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
+                'url' => 'https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2',
                 'format' => 'woff2'
             ]"
             :fontWeight="400" />
 
-        <x-blade-email::font
-            fontFamily="Roboto"
+        <x-email::font
+            fontFamily="Inter"
             fallbackFontFamily="Arial, sans-serif"
             :webFont="[
-                'url' => 'https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4AQ.woff2',
+                'url' => 'https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7.woff2',
                 'format' => 'woff2'
             ]"
             :fontWeight="700" />
-    </x-slot>
+    </x-email::head>
 
-    <x-blade-email::body style="font-family: Roboto, Arial, sans-serif;">
-        <x-blade-email::text style="font-weight: 700;">
-            This text uses Roboto Bold with Arial fallback!
-        </x-blade-email::text>
-    </x-blade-email::body>
-</x-blade-email::layout>
+    <x-email::html-body style="font-family: Inter, Arial, sans-serif;">
+        <x-email::text style="font-weight: 700;">
+            This text uses Inter Bold with Arial fallback!
+        </x-email::text>
+    </x-email::html-body>
+</x-email::html>
 ```
 
 ## Publishing Views
