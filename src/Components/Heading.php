@@ -9,7 +9,7 @@ class Heading extends BaseComponent
     public string $styleString;
 
     public function __construct(
-        string|int $as = 'h1',
+        string|int|null $as = 'h1',
         string|int|null $level = null,
         array|string $style = []
     ) {

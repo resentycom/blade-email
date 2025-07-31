@@ -20,8 +20,8 @@
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",
-        "phpunit/phpunit": "^11.0",
-        "laravel/pint": "^1.24"
+        "laravel/pint": "^1.24",
+        "pestphp/pest": "^3.8"
     },
     "autoload": {
         "psr-4": {
@@ -30,7 +30,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BladeEmail\\BladeEmail\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "extra": {
@@ -45,5 +45,10 @@
         "lint": "./vendor/bin/pint --parallel --test"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }
